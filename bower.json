@@ -1,0 +1,29 @@
+{
+  "name": "material-table",
+  "version": "0.0.1",
+  "authors": [
+    "sean <seangores@gmail.com>"
+  ],
+  "description": "Material design CSS table component built on Stylus",
+  "main": "styles/material-table.css",
+  "keywords": [
+    "material",
+    "design",
+    "polymer",
+    "google",
+    "android",
+    "css",
+    "table",
+    "html",
+    "accessibility"
+  ],
+  "license": "WTFPL",
+  "homepage": "srsgores.github.io/material-table",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

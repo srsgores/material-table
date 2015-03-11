@@ -1,0 +1,65 @@
+/*
+	material-table
+
+	demo.styl
+
+	Author: Sean Goresht
+
+	Created on 2015-03-10 in PhpStorm
+*/
+body
+	font-style normal
+	font-family "RobotoDraft", "Roboto", "Helvetica Neue, Helvetica, Arial", sans-serif
+	font-weight 300
+	font-size 100%
+	line-height 2
+	letter-spacing 0.01em
+	background-color #f5f5f5
+	margin 0
+h1, h2, h3, h4, h5, h6
+	letter-spacing 0
+	font-weight 300
+
+h1
+	font-size 2em
+h2
+	font-size 1.4em
+a
+	text-decoration none
+	font-weight bold
+	transition 0.3s ease border-color
+	border-bottom 1px solid transparent
+	&:hover
+		border-bottom-color currentColor
+	&, &:visited
+		color inherit
+.demo
+	max-width 70em
+	margin 0 auto
+	&-title
+		margin 0
+		opacity 0.8
+		text-transform inherit
+	&-block
+		&-content
+			display table
+			@media screen and (max-width 62.5em)
+				display block
+			@media screen and (min-width 62.5em)
+				padding 6em
+			padding 5%
+			background #FCFCFC
+		&-header
+			display table-cell
+			@media screen and (max-width 62.5em)
+				display block
+				width 100%
+			width 60%
+			width calc(100vw - 42em)
+			vertical-align middle
+			text-align center
+			padding 3em
+			box-sizing border-box
+.footer-container
+	color #737373
+	text-align center

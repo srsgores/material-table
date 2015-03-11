@@ -1,0 +1,158 @@
+/*
+	material-table
+
+	material-table.styl
+
+	Author: Sean Goresht
+
+	Created on 2015-03-10 in PhpStorm
+*/
+/*
+	MyAxiom2014
+
+	relationship-manager.styl
+
+	Author _admin
+
+	Created on 2015-03-10 by PhpStorm
+*/
+
+/* -- Variables -- */
+$tableContrast ?= 30
+
+// Fonts
+$tableHeaderFontWeight ?= 400
+
+$tableFontFamily ?= "RobotoDraft", "Roboto", "Helvetica Neue, Helvetica, Arial", sans-serif
+
+$tableCellPadding ?= 1.6em
+$tableCondensedCellPadding ?= $tableCellPadding / 2
+
+$tableColour ?= #212121
+$tableHeaderColour ?= dark($tableColour) ? $tableColour + $tableContrast : $tableColour - $tableContrast
+$tableBackground ?= dark($tableColour) ? white : black
+$tableBackgroundAccent ?= dark($tableBackground) ? $tableBackground + ($tableContrast * 0.3) : $tableBackground - ($tableContrast * 0.3)
+$tableBackgroundHover ?= dark($tableBackgroundAccent) ? $tableBackgroundAccent + $tableContrast : $tableBackgroundAccent - ($tableContrast * 0.5)
+$tableBackgroundActive ?= dark($tableBackgroundAccent) ? $tableBackgroundAccent + ($tableContrast * 0.5) : $tableBackgroundAccent - ($tableContrast * 0.5)
+
+$tableBorderColour ?= dark($tableColour) ? $tableBackground - $tableContrast : $tableBackground + $tableContrast
+$tableHeaderBorderColour ?= dark($tableColour) ? $tableBackground - ($tableContrast * 1.1) : $tableBackground + ($tableContrast * 1.1)
+
+
+$tableBorderWidth ?= 1px
+$tableBorderStyle ?= solid
+$tableBorder ?= $tableBorderWidth $tableBorderStyle $tableBorderColour
+
+$tableShadowEnabled ?= true
+$tableShadowDispersion ?= 0.12
+$tableShadowColour = dark($tableColour) ? transparentify(black, $tableShadowDispersion) : transparentify(white, (1 - $tableShadowDispersion))
+$tableShadowAccentColour ?= dark($tableColour) ? transparentify(black, $tableShadowDispersion * 2) : transparentify(white, (1 - $tableShadowDispersion * 2))
+$tableShadow ?= 0 1px 3px 0 $tableShadowColour, 0 1px 2px 0 $tableShadowAccentColour
+
+$tableMargin ?= 2em
+$tableCaptionMargin ?= 1em
+
+$tableTransitionStyle ?= ease
+$tableTransitionDuration ?= 0.3s
+
+/* -- import Roboto Font -- */
+@import url("//fonts.googleapis.com/css?family=Roboto400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic")
+
+.table
+	if $tableShadowEnabled is true
+		box-shadow $tableShadow
+	width 100%
+	max-width 100%
+	margin-bottom $tableMargin
+	background-color $tableBackground
+	border 0
+	border-collapse collapse
+	font-family $tableFontFamily
+	color $tableColour
+	th, td
+		text-align left
+		padding $tableCellPadding
+		vertical-align top
+		border inherit
+	thead
+		tr
+			border-bottom $tableBorder
+		th
+			font-weight $tableHeaderFontWeight
+			color $tableHeaderColour
+			vertical-align bottom
+	caption + thead, colgroup + thead, thead:first-child
+		tr:first-child
+			border-top 0
+		tbody
+			& + &
+				border-top $tableBorderWidth $tableBorderStyle $tableHeaderBorderColour
+	caption
+		opacity 0.5
+		font-size 0.8em
+		text-transform uppercase
+		font-style italic
+		text-align left
+		line-height 2
+		margin $tableCaptionMargin 0
+	&-header
+		&-title
+			font-size 2.4em
+			line-height 3.2em
+			letter-spacing 0
+			font-weight 300
+			color $tableColour
+			text-transform inherit
+			margin-bottom 1em
+			text-align center
+		&-subtitle
+			font-size 1.5em
+			line-height 2.8em
+			letter-spacing 0.01em
+			font-weight 400
+			color $tableColour
+			text-align center
+	&-bordered
+		thead tr
+			border-bottom-width ($tableBorderWidth * 2)
+		tr
+			border-bottom $tableBorder
+	&-condensed
+		tr, th, td
+			padding $tableCondensedCellPadding
+	&-striped
+		tbody
+			tr
+				&:nth-child(odd)
+					background-color $tableBackgroundAccent
+	&-hover
+		tbody
+			tr
+				transition background-color $tableTransitionDuration $tableTransitionStyle, opacity $tableTransitionDuration $tableTransitionStyle
+				&:hover
+					background-color $tableBackgroundHover
+	&-responsive-vertical
+		@media screen and (max-width 768px)
+			.table
+				margin-bottom 0
+				background-color transparent
+				thead, tfoot
+					display none
+				tbody
+					display block
+					tr
+						display block
+						border 1px solid $tableBorderColour
+						border-radius 2px
+						margin-bottom $tableCellPadding
+						td
+							background-color $tableBackground
+							display block
+							vertical-align middle
+							text-align right
+							&[data-title]:before
+								content attr(data-title)
+								float left
+								font-size inherit
+								font-weight $tableHeaderFontWeight
+								color $tableHeaderColour

@@ -1,0 +1,47 @@
+include mixins/mixins.jade
+
+extends layout
+block header-styles
+	link(rel = "stylesheet", href = "styles/demo.css")
+	link(rel = "stylesheet", href = "../styles/material-table.css")
+
+block header
+	+demoBlock
+		header.demo-block-header
+			h1 MaterialTable
+			h2 Just a material design table.  That's
+				| &nbsp;
+				em it
+			iframe(src="http://ghbtns.com/github-btn.html?user=srsgores&amp;repo=material-table&amp;type=watch&amp;count=true", allowtransparency="true", frameborder="0", scrolling="0", width="62", height="20")
+			iframe(src="http://ghbtns.com/github-btn.html?user=srsgores&repo=material-table&type=fork&count=true", allowtransparency="true", frameborder="0" scrolling="0", width="95", height="20")
+			a(href="https://github.com/srsgores/material-table" title="View this repository on GitHub") Source Code and Usage
+		+generateTable(4, "table table-bordered table-striped table-hover", "Completely customizable, accessible tables with material design")
+
+block content
+	+demoSection("Basic Tables")
+		+generateTable(10, "table", "Basic Table (.table)")
+	+demoSection("Bordered Tables")
+		+generateTable(10, "table table-bordered", "Bordered Table (.table.table-bordered)")
+	+demoSection("Zebra-striped Tables")
+		+generateTable(10, "table table-striped", "Zebra-striped Table (.table.table-striped)")
+	+demoSection("Hover Tables")
+		+generateTable(10, "table table-hover", "Zebra-striped Table (.table.table-hover)")
+	+demoSection("Table Combinations")
+		+generateTable(10, "table table-bordered table-striped", "Combination of Zebra-striped and Bordered Table (.table.table-bordered.table-striped)")
+		+generateTable(10, "table table-bordered table-striped", "Combination of Zebra-striped and Bordered Table (.table.table-bordered.table-striped)")
+		+generateTable(10, "table table-bordered table-striped table-hover", "Combination of all table styles (.table.table-bordered.table-striped.table-hover)")
+	footer
+		+demoBlock
+			header.demo-block-header
+				h1 FAQ
+				h2 Based off&nbsp;
+					a(href="http://codepen.io/zavoloklom/pen/IGkDz/") a codepen
+					|, and ported to stylus
+			iframe(height="268" scrolling="no" src="//codepen.io/zavoloklom/embed/IGkDz/?height=268", frameborder="no", allowtransparency="true", allowfullscreen="true" style="min-width: 50em;")
+				p See the Pen
+					a(href="http://codepen.io/zavoloklom/pen/IGkDz/") Material Design - Responsive Table
+					| by Sergey Kupletsky (
+					a(href="http://codepen.io/zavoloklom") @zavoloklom
+					| )) on
+					a(href="http://codepen.io")
+						CodePen
